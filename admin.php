@@ -1,4 +1,4 @@
-﻿<?php include "base.php";?>
+﻿<?php include "base.php"; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,12 +17,12 @@
 		<pre id="ssaa"></pre>
 	</div>
 	<div id="all">
-	<div id="title">
-			<?=date("m 月 d 號 l");?>| 今日瀏覽: <?=$_SESSION['total'];?> | 累積瀏覽: <?=$Total->q("SELECT SUM(`total`) FROM total")[0][0] ;?> 
+		<div id="title">
+			<?= date("m 月 d 號 l"); ?>| 今日瀏覽: <?= $_SESSION['total']; ?> | 累積瀏覽: <?= $Total->q("SELECT SUM(`total`) FROM total")[0][0]; ?>
 			<a href="index.php" style="float:right">回首頁</a>
-			</div>
+		</div>
 		<div id="title2">
-<a href="index.php"><img src="./icon/02B01.jpg" title="健康促進網-回首頁" alt="健康促進網-回首頁"></a>
+			<a href="index.php"><img src="./icon/02B01.jpg" title="健康促進網-回首頁" alt="健康促進網-回首頁"></a>
 		</div>
 		<div id="mm">
 			<div class="hal" id="lef">
@@ -40,39 +40,39 @@
 					</span>
 					<span style="width:18%; display:inline-block;">
 
-					<?php
-					if (empty($_SESSION['login'])) {
-
-					?>
-							<a href="?do=login">會員登入</a>
-						
 						<?php
-					} else {
+						if (empty($_SESSION['login'])) {
 
-						if ($_SESSION['login'] == 'admin') {
 						?>
-							歡迎，<?= $_SESSION['login']; ?><br>
-							<button onclick="location.href='admin.php'">管理</button>
-							<button onclick="location.href='./api/logout.php'">登出</button>
+							<a href="?do=login">會員登入</a>
+
 							<?php
 						} else {
+
+							if ($_SESSION['login'] == 'admin') {
 							?>
-							歡迎，<?= $_SESSION['login']; ?>
-							<button onclick="location.href='./api/logout.php'">登出</button>
-<?php
+								歡迎，<?= $_SESSION['login']; ?><br>
+								<button onclick="location.href='admin.php'">管理</button>
+								<button onclick="location.href='./api/logout.php'">登出</button>
+							<?php
+							} else {
+							?>
+								歡迎，<?= $_SESSION['login']; ?>
+								<button onclick="location.href='./api/logout.php'">登出</button>
+							<?php
+							}
+							?>
+							<!-- 因撰寫判斷式而多寫出來的空白程式區間可刪可不刪，重點是要自己看的懂 -->
+						<?php
 						}
 						?>
-						<!-- 因撰寫判斷式而多寫出來的空白程式區間可刪可不刪，重點是要自己看的懂 -->
-					<?php
-					}
-					?>
 					</span>
 					<div class="">
-					<?php
-$do=$_GET['do']??"home";
-$file="admin/".$do.".php";
-include file_exists($file)?$file:"admin/home.php";
-?>
+						<?php
+						$do = $_GET['do'] ?? "home";
+						$file = "admin/" . $do . ".php";
+						include file_exists($file) ? $file : "admin/home.php";
+						?>
 
 					</div>
 				</div>
