@@ -38,9 +38,34 @@
 					<span style="width:78%; display:inline-block;">
 						<marquee>請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					</span>
-
 					<span style="width:18%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+
+					<?php
+					if (empty($_SESSION['login'])) {
+
+					?>
+							<a href="?do=login">會員登入</a>
+						
+						<?php
+					} else {
+
+						if ($_SESSION['login'] == 'admin') {
+						?>
+							歡迎，<?= $_SESSION['login']; ?><br>
+							<button onclick="location.href='admin.php'">管理</button>
+							<button onclick="location.href='./api/logout.php'">登出</button>
+							<?php
+						} else {
+							?>
+							歡迎，<?= $_SESSION['login']; ?>
+							<button onclick="location.href='./api/logout.php'">登出</button>
+<?php
+						}
+						?>
+						<!-- 因撰寫判斷式而多寫出來的空白程式區間可刪可不刪，重點是要自己看的懂 -->
+					<?php
+					}
+					?>
 					</span>
 					<div class="">
 					<?php
@@ -48,6 +73,7 @@ $do=$_GET['do']??"home";
 $file="admin/".$do.".php";
 include file_exists($file)?$file:"admin/home.php";
 ?>
+
 					</div>
 				</div>
 			</div>
