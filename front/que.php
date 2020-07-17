@@ -17,7 +17,7 @@
                 <td><?= ($k + 1); ?>.</td>
                 <td><?= $q['text']; ?></td>
                 <td><?= $q['count']; ?></td>
-                <td><a href="index.php?do=result">結果</a></td>
+                <td><a href="index.php?do=result&id=<?= $q['id']; ?>">結果</a></td>
                 <td>
                     <?php
                     if (!empty($_SESSION['login'])) {
