@@ -22,7 +22,7 @@
                     <?php
                     if (!empty($_SESSION['login'])) {
                     ?>
-                        <a href="index.php?do=vote?id=<?= $q['id']; ?>">參與投票</a>
+                        <a href="index.php?do=vote&id=<?= $q['id']; ?>">參與投票</a>
                     <?php
                     } else {
                     ?>
